@@ -1,0 +1,15 @@
+# docker run --name api-soli
+# d-pg -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -e POSTGRE
+# S_DB=apisolid -d postgres
+
+version: '3.8'
+
+services:
+  api-solid-pg:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=docker
+      - POSTGRES_DB=apisolid
