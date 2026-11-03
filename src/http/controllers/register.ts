@@ -1,45 +1,31 @@
 import { prisma } from "@/lib/prisma.js";
+import { PrismaUserRepository } from "@/repositories/prisma-users-repository.js";
+import { RegisterUseCase } from "@/use-cases/register.js";
+import { registerBodySchema } from "@/validators/register.js";
 import { hash } from "bcryptjs";
 import type { FastifyReply, FastifyRequest } from "fastify";
-import z from "zod";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
-  const registerBodyShema = z.object({
-    name: z.string(),
-    email: z.email(),
-    password: z.string().min(6),
-  });
-  const validation = registerBodyShema.safeParse(request.body);
+  const validation = registerBodySchema.safeParse(request.body);
   if (!validation.success) {
     return reply.status(400).send({
       error: "Formato invalido",
-      messge: validation.error.issues,
+      message: validation.error.issues,
     });
   }
 
   const { name, email, password } = validation.data;
+  const prismaUserRepository = new PrismaUserRepository()
+  const registerUseCase= new RegisterUseCase(prismaUserRepository)
 
-  const userWithSameEmail = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-  });
-
-  if (userWithSameEmail) {
-    return reply.status(409).send({
-      message: "Email duplicado",
-    });
-  }
-
-  const password_hash = await hash(password, 6);
-
-  await prisma.user.create({
-    data: {
+  try {
+    await registerUseCase.execute({
       name,
       email,
-      password_hash,
-    },
-  });
+      password,
+    })
+  } catch (error) {
+    return reply.status(409).send()
+  }
 
-  return reply.status(201).send();
 }
