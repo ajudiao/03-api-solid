@@ -1,6 +1,5 @@
-
-export interface registerProps {
-  "name": string,
-  "email": string,
-  "password_hash": string,
+export interface RegisterUseCaseRequest {
+  name: string;
+  email: string;
+  password: string;
 }
