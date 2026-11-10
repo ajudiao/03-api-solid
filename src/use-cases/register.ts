@@ -1,4 +1,4 @@
-import { UserAlreadyExistsError } from "@/error/user-already-exists-error.js";
+import { UserAlreadyExistsError } from "@/use-cases/error/user-already-exists-error.js";
 import type { User } from "@/generated/prisma/client.js";
 import type { UserRepository } from "@/repositories/user-repository.js";
 import type { RegisterUseCaseRequest } from "@/types/register.js";
@@ -10,7 +10,7 @@ interface RegisterUseCaseResponse {
 
 export class RegisterUseCase {
   constructor(private readonly userRepository: UserRepository) {}
- 
+
   async execute({
     name,
     email,

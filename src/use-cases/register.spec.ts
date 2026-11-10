@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { compare } from "bcryptjs";
 
 import { InMemoryUserRepository } from "@/repositories/in-memory/in-memory-users-repository.js";
-import { UserAlreadyExistsError } from "@/error/user-already-exists-error.js";
+import { UserAlreadyExistsError } from "@/use-cases/error/user-already-exists-error.js";
 import { RegisterUseCase } from "./register.js";
 import { string } from "zod";
 
@@ -56,6 +56,6 @@ describe("Register Use Case", () => {
       password: "123456",
     });
 
-    expect(user.id).toEqual(expect.any(String))
+    expect(user.id).toEqual(expect.any(String));
   });
 });

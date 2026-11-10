@@ -1,4 +1,4 @@
-import { UserAlreadyExistsError } from "@/error/user-already-exists-error.js";
+import { UserAlreadyExistsError } from "@/use-cases/error/user-already-exists-error.js";
 import { PrismaUserRepository } from "@/repositories/prisma/prisma-user-repository.js";
 import { RegisterUseCase } from "@/use-cases/register.js";
 import { registerBodySchema } from "@/validators/register.js";
