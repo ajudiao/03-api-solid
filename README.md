@@ -7,21 +7,21 @@ API REST para uma aplicação de gestão de check-ins em academias, inspirada no
 - [x] Deve ser possível registar um novo utilizador.
 - [x] Deve ser possível autenticar um utilizador.
 - [x] Deve ser possível obter o perfil do utilizador autenticado.
-- [ ] Deve ser possível obter o número de check-ins realizados pelo utilizador autenticado.
-- [ ] Deve ser possível consultar o histórico de check-ins do utilizador autenticado.
+- [x] Deve ser possível obter o número de check-ins realizados pelo utilizador autenticado.
+- [x] Deve ser possível consultar o histórico de check-ins do utilizador autenticado.
 - [ ] Deve ser possível listar academias próximas da localização do utilizador.
-- [ ] Deve ser possível pesquisar academias pelo nome.
+- [x] Deve ser possível pesquisar academias pelo nome.
 - [ ] Deve ser possível obter os detalhes de uma academia.
 - [ ] Deve ser possível listar as academias cadastradas.
 - [x] Deve ser possível realizar check-in numa academia.
 - [ ] Deve ser possível validar um check-in.
-- [ ] Deve ser possível cadastrar uma academia.
+- [x] Deve ser possível cadastrar uma academia.
 
 ## Regras de Negócio (RNs)
 
-- [ ] Um utilizador não pode registar-se com um endereço de e-mail já existente.
-- [ ] Um utilizador não pode realizar mais de um check-in no mesmo dia.
-- [ ] Um utilizador só pode realizar check-in se estiver a uma distância máxima de 100 metros da academia.
+- [x] Um utilizador não pode registar-se com um endereço de e-mail já existente.
+- [x] Um utilizador não pode realizar mais de um check-in no mesmo dia.
+- [x] Um utilizador só pode realizar check-in se estiver a uma distância máxima de 100 metros da academia.
 - [ ] Um check-in só pode ser validado por um administrador.
 - [ ] Apenas administradores podem cadastrar academias.
 - [ ] Um check-in só pode ser validado dentro de um período de 20 minutos após a sua realização.

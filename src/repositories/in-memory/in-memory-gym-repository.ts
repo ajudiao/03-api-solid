@@ -27,4 +27,15 @@ export class InMemoryGymRepository implements GymsRepository {
     }
     return gym;
   }
+
+  async search({ query, page }: { query: string; page: number }): Promise<Gym[]> {
+    const gyms = this.items.filter((gym) => {
+      return gym.title.toLowerCase().includes(query.toLowerCase());
+    });
+
+    const startIndex = (page - 1) * 20;
+    const endIndex = page * 20;
+
+    return gyms.slice(startIndex, endIndex);
+  }
 }
