@@ -3,6 +3,7 @@ import { PrismaUserRepository } from "@/repositories/prisma/prisma-user-reposito
 import { RegisterUseCase } from "@/use-cases/register.js";
 import { registerBodySchema } from "@/validators/register.js";
 import type { FastifyReply, FastifyRequest } from "fastify";
+import { makeRegisterUserCase } from "@/use-cases/factories/make-register-use-case.js";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const bodyValidation = registerBodySchema.safeParse(request.body);
@@ -16,9 +17,9 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   const { name, email, password } = bodyValidation.data;
 
   try {
-    const userRepository = new PrismaUserRepository();
-    const registerUseCase = new RegisterUseCase(userRepository);
 
+    const registerUseCase = makeRegisterUserCase()
+    
     await registerUseCase.execute({
       name,
       email,

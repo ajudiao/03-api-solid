@@ -4,16 +4,16 @@ API REST para uma aplicação de gestão de check-ins em academias, inspirada no
 
 ## Requisitos Funcionais (RFs)
 
-- [ ] Deve ser possível registar um novo utilizador.
-- [ ] Deve ser possível autenticar um utilizador.
-- [ ] Deve ser possível obter o perfil do utilizador autenticado.
+- [x] Deve ser possível registar um novo utilizador.
+- [x] Deve ser possível autenticar um utilizador.
+- [x] Deve ser possível obter o perfil do utilizador autenticado.
 - [ ] Deve ser possível obter o número de check-ins realizados pelo utilizador autenticado.
 - [ ] Deve ser possível consultar o histórico de check-ins do utilizador autenticado.
 - [ ] Deve ser possível listar academias próximas da localização do utilizador.
 - [ ] Deve ser possível pesquisar academias pelo nome.
 - [ ] Deve ser possível obter os detalhes de uma academia.
 - [ ] Deve ser possível listar as academias cadastradas.
-- [ ] Deve ser possível realizar check-in numa academia.
+- [x] Deve ser possível realizar check-in numa academia.
 - [ ] Deve ser possível validar um check-in.
 - [ ] Deve ser possível cadastrar uma academia.
 

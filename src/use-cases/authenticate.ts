@@ -8,13 +8,6 @@ interface AuthenticateUseCaseRequest {
   password: string;
 }
 
-/*
-interface AuthenticateUseCaseResponse {
-  userId: string;
-  name: string;
-  email: string;
-}
-*/
 interface AuthenticateUseCaseResponse {
   user: User;
 }

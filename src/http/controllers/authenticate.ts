@@ -3,6 +3,7 @@ import type { FastifyReply, FastifyRequest } from "fastify";
 import { authenticateSchema } from "@/validators/authencate.js";
 import { AuthenticateUseCase } from "@/use-cases/authenticate.js";
 import { InvalidCredentialsError } from "@/use-cases/error/invalid-credentials-erros.js";
+import { makeAutenticateUseCase } from "@/use-cases/factories/make-authentica-use-case.js";
 
 export async function authenticate(
   request: FastifyRequest,
@@ -19,8 +20,7 @@ export async function authenticate(
   const { email, password } = bodyValidation.data;
 
   try {
-    const userRepository = new PrismaUserRepository();
-    const registerUseCase = new AuthenticateUseCase(userRepository);
+    const registerUseCase = makeAutenticateUseCase();
 
     await registerUseCase.execute({
       email,
