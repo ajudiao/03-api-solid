@@ -23,15 +23,13 @@ export class InMemoryCheckInRepository implements CheckInsRepository {
     const startOfTheDay = dayjs(date).startOf("date");
     const endOfTheDay = dayjs(date).endOf("date");
 
-    const checkInOnSameDate = this.checkIns.find(
-      (checkIn) => {
-        const checkInDate = dayjs(checkIn.created_at);
-        const isOnSameDate =
-          checkInDate.isAfter(startOfTheDay) && checkInDate.isBefore(endOfTheDay);
+    const checkInOnSameDate = this.checkIns.find((checkIn) => {
+      const checkInDate = dayjs(checkIn.created_at);
+      const isOnSameDate =
+        checkInDate.isAfter(startOfTheDay) && checkInDate.isBefore(endOfTheDay);
 
-        return checkIn.user_id === userId && isOnSameDate;
-      }
-    );
+      return checkIn.user_id === userId && isOnSameDate;
+    });
     return checkInOnSameDate || null;
   }
 
@@ -43,5 +41,18 @@ export class InMemoryCheckInRepository implements CheckInsRepository {
 
   async countByUserId(userId: string) {
     return this.checkIns.filter((checkIn) => checkIn.user_id === userId).length;
+  }
+
+  async findById(id: string) {
+    const checkIn = this.checkIns.find((checkIn) => checkIn.id === id);
+    return checkIn || null;
+  }
+
+  async save(checkIn: CheckIn) {
+    const index = this.checkIns.findIndex((c) => c.id === checkIn.id);
+    if (index !== -1) {
+      this.checkIns[index] = checkIn; 
+    }
+    return checkIn;
   }
 }

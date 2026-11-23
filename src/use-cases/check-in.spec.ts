@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { CheckInUseCase } from "./checkin.js";
+import { CheckInUseCase } from "./check-in.js";
 import { InMemoryCheckInRepository } from "@/repositories/in-memory/in-memory-check-ins-repository.js";
 import { InMemoryGymRepository } from "@/repositories/in-memory/in-memory-gym-repository.js";
 import { Decimal } from "@prisma/client/runtime/client.js";
