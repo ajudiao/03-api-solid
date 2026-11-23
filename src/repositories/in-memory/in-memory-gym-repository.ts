@@ -1,5 +1,6 @@
-import {type  Gym, Prisma } from "@/generated/prisma/client.js";
+import { type Gym, Prisma } from "@/generated/prisma/client.js";
 import type { GymsRepository } from "../gyms-repository.js";
+import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinate.js";
 
 export class InMemoryGymRepository implements GymsRepository {
   public items: Gym[] = [];
@@ -28,7 +29,13 @@ export class InMemoryGymRepository implements GymsRepository {
     return gym;
   }
 
-  async search({ query, page }: { query: string; page: number }): Promise<Gym[]> {
+  async search({
+    query,
+    page,
+  }: {
+    query: string;
+    page: number;
+  }): Promise<Gym[]> {
     const gyms = this.items.filter((gym) => {
       return gym.title.toLowerCase().includes(query.toLowerCase());
     });
@@ -37,5 +44,23 @@ export class InMemoryGymRepository implements GymsRepository {
     const endIndex = page * 20;
 
     return gyms.slice(startIndex, endIndex);
+  }
+
+  async findManyNearby({
+    latitude,
+    longitude,
+  }: {
+    latitude: number;
+    longitude: number;
+  }): Promise<Gym[]> {
+    // Implement logic to find gyms nearby based on latitude and longitude
+    // For simplicity, this example returns all gyms without filtering by distance
+
+    return this.items.filter((gym) => {
+      const distance = getDistanceBetweenCoordinates(
+       {latitude: gym.latitude.toNumber(), longitude: gym.longitude.toNumber()}, {latitude: latitude, longitude: longitude}
+      );
+      return distance <= 10; // Example threshold for nearby gyms
+    });
   }
 }
