@@ -1,6 +1,5 @@
 import type { CheckIn } from "@/generated/prisma/client.js";
 import type { CheckInsRepository } from "@/repositories/check-in-repository.js";
-import type { GymsRepository } from "@/repositories/gyms-repository.js";
 
 interface GetUserMetricsUseCaseRequest {
   userId: string;

@@ -17,9 +17,8 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   const { name, email, password } = bodyValidation.data;
 
   try {
+    const registerUseCase = makeRegisterUserCase();
 
-    const registerUseCase = makeRegisterUserCase()
-    
     await registerUseCase.execute({
       name,
       email,
