@@ -1,7 +1,5 @@
-import { PrismaUserRepository } from "@/repositories/prisma/prisma-user-repository.js";
 import type { FastifyReply, FastifyRequest } from "fastify";
-import { authenticateSchema } from "@/validators/authencate.js";
-import { AuthenticateUseCase } from "@/use-cases/authenticate.js";
+import { authenticateSchema } from "@/schemas/authencate.js";
 import { InvalidCredentialsError } from "@/use-cases/error/invalid-credentials-erros.js";
 import { makeAutenticateUseCase } from "@/use-cases/factories/make-authentica-use-case.js";
 

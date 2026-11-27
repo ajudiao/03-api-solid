@@ -72,7 +72,7 @@ describe("Check In Use Case", () => {
 
   it("should be able to check in twice in different days", async () => {
     vi.setSystemTime(new Date(2023, 0, 20, 8, 0, 0)); // ANO, MES, DIA, HORA, MINUTO, SEGUNDO
-    const { checkIn } = await sut.execute({
+    const { checkIn } = await sut .execute({
       userId: "user-01",
       gymId: "gym-01",
       userLatitude: -8.8265542,

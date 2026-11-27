@@ -1,7 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-
 import { InMemoryGymRepository } from "@/repositories/in-memory/in-memory-gym-repository.js";
-import { CreateGymUseCase } from "./create-gym.js";
 import { SearchGymsUseCase } from "./search-gyms.js";
 
 let gymRepository: InMemoryGymRepository;

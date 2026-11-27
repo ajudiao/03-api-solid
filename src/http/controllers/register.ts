@@ -1,9 +1,7 @@
 import { UserAlreadyExistsError } from "@/use-cases/error/user-already-exists-error.js";
-import { PrismaUserRepository } from "@/repositories/prisma/prisma-user-repository.js";
-import { RegisterUseCase } from "@/use-cases/register.js";
-import { registerBodySchema } from "@/validators/register.js";
 import type { FastifyReply, FastifyRequest } from "fastify";
 import { makeRegisterUserCase } from "@/use-cases/factories/make-register-use-case.js";
+import { registerBodySchema } from "@/schemas/register.js";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const bodyValidation = registerBodySchema.safeParse(request.body);
